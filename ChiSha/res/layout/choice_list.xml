@@ -12,5 +12,5 @@
 	 	android:id="@android:id/empty"
 	 	android:layout_width="fill_parent" 
 	    android:layout_height="wrap_content" 
-	    android:text="列表为空"/>
+	    android:text="@string/list_blank"/>
 </LinearLayout>
