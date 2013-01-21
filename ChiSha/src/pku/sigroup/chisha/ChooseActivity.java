@@ -1,5 +1,8 @@
 package pku.sigroup.chisha;
 
+import java.util.Arrays;
+import java.util.List;
+
 import pku.tangkai.utils.ShakeListener;
 
 import android.app.Activity;
@@ -9,7 +12,7 @@ import android.os.Vibrator;
 import android.widget.TextView;
 
 public class ChooseActivity extends Activity {
-	//private List<String> mChoiceList;
+	private List<String> mChoiceList;
 	private ShakeListener mShaker;
 	String[] canteen;
 	TextView text;
@@ -19,10 +22,16 @@ public class ChooseActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.choose); 
-		//mChoiceList = ChoiceManager.getChoiceList();
+		mChoiceList = ChoiceManager.getChoiceList();
+		// add some default choices if empty (only first time)
+		if (mChoiceList.isEmpty()) {
+			String[] canteens = this.getResources().getStringArray(R.array.canteen);
+			mChoiceList.addAll(Arrays.asList(canteens));
+		}
+		
 		text = (TextView) findViewById(R.id.choose);
-		canteen = getResources().getStringArray(R.array.canteen);
-		// TODO:
+		canteen = mChoiceList.toArray(new String[0]);
+		
 		final Vibrator vibe = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 		
 	    mShaker = new ShakeListener(this);

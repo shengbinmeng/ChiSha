@@ -1,6 +1,7 @@
 package pku.sigroup.chisha;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import pku.shengbin.utils.MessageBox;
@@ -53,6 +54,10 @@ public class ChoiceListActivity extends ListActivity {
         	.setPositiveButton("是", 
         		new DialogInterface.OnClickListener() {
 	        		public void onClick(DialogInterface arg0, int arg1) {
+	        			if (mChoiceList.size() <= 1) {
+	    					Toast.makeText(ChoiceListActivity.this, "至少保留一个吃饭的地儿吧！先添加一个别的再删除最后一个。", Toast.LENGTH_LONG).show();
+	    					return;
+	        			}
 	        			mChoiceList.remove(choice);
 	        			updateChoiceList();
     					Toast.makeText(ChoiceListActivity.this, "删除成功!", Toast.LENGTH_SHORT).show();
