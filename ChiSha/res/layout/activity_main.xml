@@ -8,8 +8,8 @@
 		>
 		<TextView
 		    android:id="@+id/title"
-		    android:text="" 
-			android:textSize="0sp"
+		    android:text="@string/app_name" 
+			android:textSize="24sp"
 			android:textStyle="bold"
 			android:typeface="serif"
 		    android:layout_width="wrap_content" 

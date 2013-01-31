@@ -1,7 +1,6 @@
 package pku.sigroup.chisha;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import pku.shengbin.utils.MessageBox;
@@ -95,6 +94,8 @@ public class ChoiceListActivity extends ListActivity {
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
+		//Temporally a very bad solution for those devices without Menu button; will change in future version
+		this.openOptionsMenu();
 	}
 	
 	// Menu item Ids
@@ -126,7 +127,7 @@ public class ChoiceListActivity extends ListActivity {
 					public void onClick(DialogInterface arg0, int arg1) {
 						String input = nameEdit.getText().toString();
 						if (input.equals("")) {
-							MessageBox.show(ChoiceListActivity.this, "提示", "请输入内容!");
+							MessageBox.show(ChoiceListActivity.this, "提示", "内容为空!");
 							return ;
 						}
 						
@@ -145,7 +146,7 @@ public class ChoiceListActivity extends ListActivity {
 	        	.setIcon(android.R.drawable.ic_input_get)
 	        	.setView(nameEdit)
 	        	.setPositiveButton("确定", ok_listener)
-	        	.setNeutralButton("其他方式选择", new DialogInterface.OnClickListener() {
+	        	.setNeutralButton("导入...", new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						// TODO Auto-generated method stub
 						

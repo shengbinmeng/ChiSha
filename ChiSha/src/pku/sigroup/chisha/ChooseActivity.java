@@ -3,6 +3,7 @@ package pku.sigroup.chisha;
 import java.util.Arrays;
 import java.util.List;
 
+import pku.shengbin.utils.MessageBox;
 import pku.tangkai.utils.ShakeListener;
 
 import android.app.Activity;
@@ -34,36 +35,45 @@ public class ChooseActivity extends Activity {
 		
 		final Vibrator vibe = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 		
-	    mShaker = new ShakeListener(this);
-	    mShaker.setOnShakeListener(new ShakeListener.OnShakeListener () {
-		    public void onShake() {
-		    	int r;
-		    	do {
-		    		r =  (int)(Math.random() * canteen.length);
-		    	} while(r==last);
-		    	last = r;
-		    	text.setText(canteen[r]);
-		    	vibe.vibrate(100);
-		    }
-	    });
+		//TODO: if you throw an exception, you should catch it somewhere, or the whole app collapses
+		try {
+		    mShaker = new ShakeListener(this);
+		    mShaker.setOnShakeListener(new ShakeListener.OnShakeListener () {
+			    public void onShake() {
+			    	int r;
+			    	do {
+			    		r =  (int)(Math.random() * canteen.length);
+			    	} while(r==last);
+			    	last = r;
+			    	text.setText(canteen[r]);
+			    	vibe.vibrate(100);
+			    }
+		    });
+		} catch (Exception e) {
+			MessageBox.show(this, "Sorry", e.getMessage());
+		}
+	    
 	}
 	
 	@Override
 	protected void onResume() {
 		text.setText(R.string.welcome);
-		mShaker.onResume();
+		if (mShaker != null) 
+			mShaker.onResume();
 		super.onResume();
 	}
 	
 	@Override
 	protected void onPause() {
-	    mShaker.onPause();
+	    if (mShaker != null) 
+	    	mShaker.onPause();
 	    super.onPause();
 	}
 
 	@Override
     protected void onStop(){
-		mShaker.onStop();
+		if (mShaker != null) 
+			mShaker.onStop();
     	super.onStop();
     }
 	
