@@ -1,8 +1,9 @@
 package pku.sigroup.chisha;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import com.actionbarsherlock.app.SherlockListActivity;
 
 import pku.shengbin.utils.MessageBox;
 import android.app.AlertDialog;
@@ -21,7 +22,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 
-public class ChoiceListActivity extends ListActivity {
+public class ChoiceListActivity extends SherlockListActivity {
 	private List<String> mChoiceList;
 	
 	@Override
@@ -95,21 +96,20 @@ public class ChoiceListActivity extends ListActivity {
 
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
+		Toast.makeText(ChoiceListActivity.this, "长按列表项可以开启上下文菜单", Toast.LENGTH_SHORT).show();
 	}
 	
 	// Menu item Ids
     public static final int MENU_ADDCHOICE = Menu.FIRST;
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu1(Menu menu) {
         super.onCreateOptionsMenu(menu); 
 		menu.add(0, MENU_ADDCHOICE, 0, "添加选择");
 
         return true;
     }
     
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected1(MenuItem item) {
         switch (item.getItemId()) {
 	        
 	        case MENU_ADDCHOICE:

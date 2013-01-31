@@ -34,7 +34,8 @@ public class ChooseActivity extends Activity {
 		
 		final Vibrator vibe = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 		
-	    mShaker = new ShakeListener(this);
+	    //mShaker = new ShakeListener(this);
+	    /*
 	    mShaker.setOnShakeListener(new ShakeListener.OnShakeListener () {
 		    public void onShake() {
 		    	int r;
@@ -46,24 +47,27 @@ public class ChooseActivity extends Activity {
 		    	vibe.vibrate(100);
 		    }
 	    });
+	    */
 	}
 	
 	@Override
 	protected void onResume() {
 		text.setText(R.string.welcome);
-		mShaker.onResume();
+		//TODO: should handle the exception here
+		//mShaker.onResume();
+		
 		super.onResume();
 	}
 	
 	@Override
 	protected void onPause() {
-	    mShaker.onPause();
+	    //mShaker.onPause();
 	    super.onPause();
 	}
 
 	@Override
     protected void onStop(){
-		mShaker.onStop();
+		//mShaker.onStop();
     	super.onStop();
     }
 	
