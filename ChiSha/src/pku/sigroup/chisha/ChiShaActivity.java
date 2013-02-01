@@ -40,6 +40,7 @@ public class ChiShaActivity extends SherlockFragmentActivity {
         mTabsAdapter.addTab(mTabHost.newTabSpec("choice").setIndicator("有啥",res.getDrawable(android.R.drawable.ic_popup_disk_full)),
                 ChoiceListActivity.ChoiceListFragment.class, null);
 
+        
         if (savedInstanceState != null) {
             mTabHost.setCurrentTabByTag(savedInstanceState.getString("tab"));
         }
@@ -64,6 +65,8 @@ public class ChiShaActivity extends SherlockFragmentActivity {
         private final TabHost mTabHost;
         private final ViewPager mViewPager;
         private final ArrayList<TabInfo> mTabs = new ArrayList<TabInfo>();
+        private final ArrayList<Fragment> mFragments = new ArrayList<Fragment>();
+
 
         static final class TabInfo {
             private final String tag;
@@ -114,18 +117,20 @@ public class ChiShaActivity extends SherlockFragmentActivity {
             TabInfo info = new TabInfo(tag, clss, args);
             mTabs.add(info);
             mTabHost.addTab(tabSpec);
+            Fragment fragment = Fragment.instantiate(mContext, info.clss.getName(), info.args);
+            mFragments.add(fragment);
+            
             notifyDataSetChanged();
         }
 
         @Override
         public int getCount() {
-            return mTabs.size();
+            return mFragments.size();
         }
 
         @Override
         public Fragment getItem(int position) {
-            TabInfo info = mTabs.get(position);
-            return Fragment.instantiate(mContext, info.clss.getName(), info.args);
+            return mFragments.get(position);
         }
 
         @Override
@@ -150,6 +155,12 @@ public class ChiShaActivity extends SherlockFragmentActivity {
             widget.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);
             mTabHost.setCurrentTab(position);
             widget.setDescendantFocusability(oldFocusability);
+            
+            
+            // A Fragment's life cycle is generally tied to the Activity which it's in.
+            // This ChiShaActivity OnResumed only once, so its Fragments' onResume gets called no more.
+            // Here we call it explicitly to reinitialize the text and list.
+            mFragments.get(position).onResume();
         }
 
         @Override
@@ -163,5 +174,15 @@ public class ChiShaActivity extends SherlockFragmentActivity {
 		ChoiceManager.saveChoiceList();
 		super.finish();
 	}
+
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+		// TODO Auto-generated method stub
+		super.onSaveInstanceState(outState);
+		outState.putString("tab", mTabHost.getCurrentTabTag());
+	}
+	
+	
 
 }

@@ -68,19 +68,20 @@ public class ChooseActivity extends SherlockFragmentActivity {
     		} catch (Exception e) {
     			MessageBox.show(this.getActivity(), "Sorry", e.getMessage());
     		}
-    	    
+    	        		
             return v;
         }
         
         @Override
 		public void onResume() {
+    		super.onResume();
     		text.setText(R.string.welcome);
     		if (mShaker != null)
     			mShaker.onResume();
-    		super.onResume();
     	}
-    	
-    	@Override
+        
+
+		@Override
 		public void onPause() {
     		if (mShaker != null)
     			mShaker.onPause();

@@ -29,6 +29,7 @@ public class ChoiceListActivity extends SherlockFragmentActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		FragmentManager fm = getSupportFragmentManager();
         // Create the list fragment and add it as our sole content.
         if (fm.findFragmentById(android.R.id.content) == null) {
@@ -47,9 +48,8 @@ public class ChoiceListActivity extends SherlockFragmentActivity {
 		    // application this would come from a resource.
 		    setEmptyText("No Items");
 		    // We have a menu item to show in action bar.
-		    setHasOptionsMenu(true);
-		    // Start out with a progress indicator.
-		    setListShown(false);
+		    setHasOptionsMenu(true); // if not set this, the fragment will not receive onCreateOptionsMenu
+
 
 			this.initChoiceList();
 			
@@ -114,8 +114,8 @@ public class ChoiceListActivity extends SherlockFragmentActivity {
 		
 		@Override
 		public void onResume() {
-			this.updateChoiceList();
 			super.onResume();
+			this.updateChoiceList();
 		}
 
 		@Override
