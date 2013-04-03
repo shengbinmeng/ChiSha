@@ -5,8 +5,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="list_blank">列表为空</string>
-    <string name="welcome">摇一摇就知道~</string>    
-    <string-array name="canteen">
+    <string name="welcome">摇一摇就知道~</string>
+    <string-array name="canteens">
         <item>学一</item>
         <item>农园</item>
         <item>燕南</item>
