@@ -10,14 +10,17 @@ import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.SubMenu;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.View.OnCreateContextMenuListener;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
@@ -37,6 +40,8 @@ public class ChoiceListActivity extends SherlockFragmentActivity {
             fm.beginTransaction().add(android.R.id.content, list).commit();
         }  
 	}
+	
+	
 	
     public static class ChoiceListFragment extends SherlockListFragment {
     	private List<String> mChoiceList;
@@ -68,6 +73,77 @@ public class ChoiceListActivity extends SherlockFragmentActivity {
 		}
 		
 		
+		@Override
+		public void onCreate(Bundle savedInstanceState) {
+			// TODO Auto-generated method stub
+			super.onCreate(savedInstanceState);
+		}
+
+
+		@Override
+		public View onCreateView(LayoutInflater inflater, ViewGroup container,
+				Bundle savedInstanceState) {
+			// TODO Auto-generated method stub
+			return super.onCreateView(inflater, container, savedInstanceState);
+		}
+
+
+		@Override
+		public void onDestroyView() {
+			// TODO Auto-generated method stub
+			super.onDestroyView();
+		}
+
+
+		@Override
+		public void onViewCreated(View view, Bundle savedInstanceState) {
+			// TODO Auto-generated method stub
+			super.onViewCreated(view, savedInstanceState);
+		}
+
+
+		@Override
+		public void onDestroy() {
+			// TODO Auto-generated method stub
+			super.onDestroy();
+		}
+
+
+		@Override
+		public void onPause() {
+			// TODO Auto-generated method stub
+			super.onPause();
+		}
+
+
+		@Override
+		public void onStart() {
+			// TODO Auto-generated method stub
+			super.onStart();
+		}
+
+
+		@Override
+		public void onStop() {
+			// TODO Auto-generated method stub
+			super.onStop();
+		}
+
+
+		@Override
+		public void onAttach(Activity activity) {
+			// TODO Auto-generated method stub
+			super.onAttach(activity);
+		}
+
+
+		@Override
+		public void onDetach() {
+			// TODO Auto-generated method stub
+			super.onDetach();
+		}
+
+
 		@Override
 		public boolean onContextItemSelected(android.view.MenuItem item) {
 			AdapterContextMenuInfo info = (AdapterContextMenuInfo) item.getMenuInfo();
@@ -108,8 +184,8 @@ public class ChoiceListActivity extends SherlockFragmentActivity {
 	    }
 		
 		public void updateChoiceList() {
-			//mChoiceList = QNchoiceManager.getChoiceList();
-			((ArrayAdapter<?>)this.getListAdapter()).notifyDataSetChanged();
+			ArrayAdapter<?> adapter = ((ArrayAdapter<?>)this.getListAdapter());
+			adapter.notifyDataSetChanged();
 		}
 		
 		@Override

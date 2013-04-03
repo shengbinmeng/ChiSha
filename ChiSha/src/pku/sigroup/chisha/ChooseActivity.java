@@ -6,6 +6,7 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import pku.shengbin.utils.MessageBox;
 import pku.tangkai.utils.ShakeListener;
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -33,7 +34,7 @@ public class ChooseActivity extends SherlockFragmentActivity {
 	public static class ChooseFragment extends SherlockFragment {
 		private List<String> mChoiceList;
 		private ShakeListener mShaker;
-		String[] canteen;
+		String[] canteens;
 		TextView text;
 		int last;
 		
@@ -45,11 +46,11 @@ public class ChooseActivity extends SherlockFragmentActivity {
     		mChoiceList = ChoiceManager.getChoiceList();
     		// add some default choices if empty (only first time)
     		if (mChoiceList.isEmpty()) {
-    			String[] canteens = this.getResources().getStringArray(R.array.canteen);
-    			mChoiceList.addAll(Arrays.asList(canteens));
+    			String[] canteenss = this.getResources().getStringArray(R.array.canteens);
+    			mChoiceList.addAll(Arrays.asList(canteenss));
     		}
     		
-    		canteen = mChoiceList.toArray(new String[0]);
+    		canteens = mChoiceList.toArray(new String[0]);
     		
     		final Vibrator vibe = (Vibrator)this.getActivity().getSystemService(Context.VIBRATOR_SERVICE);
     		try {
@@ -58,10 +59,10 @@ public class ChooseActivity extends SherlockFragmentActivity {
 	    		    public void onShake() {
 	    		    	int r;
 	    		    	do {
-	    		    		r =  (int)(Math.random() * canteen.length);
+	    		    		r =  (int)(Math.random() * canteens.length);
 	    		    	} while(r==last);
 	    		    	last = r;
-	    		    	text.setText(canteen[r]);
+	    		    	text.setText(canteens[r]);
 	    		    	vibe.vibrate(100);
 	    		    }
 	    	    });
@@ -71,6 +72,52 @@ public class ChooseActivity extends SherlockFragmentActivity {
     	        		
             return v;
         }
+        
+        @Override
+		public void onCreate(Bundle savedInstanceState) {
+			// TODO Auto-generated method stub
+			super.onCreate(savedInstanceState);
+		}
+
+
+		@Override
+		public void onActivityCreated(Bundle savedInstanceState) {
+			// TODO Auto-generated method stub
+			super.onActivityCreated(savedInstanceState);
+		}
+		
+		
+
+		@Override
+		public void onDestroyView() {
+			// TODO Auto-generated method stub
+			super.onDestroyView();
+		}
+
+		@Override
+		public void onViewCreated(View view, Bundle savedInstanceState) {
+			// TODO Auto-generated method stub
+			super.onViewCreated(view, savedInstanceState);
+		}
+
+		@Override
+		public void onDestroy() {
+			// TODO Auto-generated method stub
+			super.onDestroy();
+		}
+        
+        @Override
+		public void onAttach(Activity activity) {
+			// TODO Auto-generated method stub
+			super.onAttach(activity);
+		}
+
+
+		@Override
+		public void onDetach() {
+			// TODO Auto-generated method stub
+			super.onDetach();
+		}
         
         @Override
 		public void onResume() {
