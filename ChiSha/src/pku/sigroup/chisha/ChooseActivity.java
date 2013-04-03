@@ -85,7 +85,6 @@ public class ChooseActivity extends SherlockFragmentActivity {
 			// TODO Auto-generated method stub
 			super.onActivityCreated(savedInstanceState);
 		}
-			    	
 
 		@Override
 		public void onDestroyView() {

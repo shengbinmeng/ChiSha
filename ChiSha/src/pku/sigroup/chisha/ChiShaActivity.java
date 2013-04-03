@@ -217,5 +217,9 @@ public class ChiShaActivity extends SherlockFragmentActivity {
 		outState.putString("tab", mTabHost.getCurrentTabTag());
 	}
 	
+<<<<<<< HEAD
+=======
+	
+>>>>>>> sherlock
 
 }
