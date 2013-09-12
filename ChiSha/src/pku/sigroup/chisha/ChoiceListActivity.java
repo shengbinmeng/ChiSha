@@ -169,10 +169,6 @@ public class ChoiceListActivity extends SherlockFragmentActivity {
 	        		new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface arg0, int arg1) {
 						}
-<<<<<<< HEAD
-
-=======
->>>>>>> sherlock
 	        		}
 	        	)
 	        	.show();
