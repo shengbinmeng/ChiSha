@@ -203,13 +203,14 @@ public class ChoiceListActivity extends SherlockFragmentActivity {
 		
 		// Menu item Ids
 	    public static final int MENU_ADDCHOICE = Menu.FIRST;
+	    public static final int MENU_ABOUT = Menu.FIRST + 1;
+
 
 	    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
 	    	MenuItem addItem = menu.add(0, MENU_ADDCHOICE, 0, "添加选择");
 	    	addItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 	    	SubMenu sub = menu.addSubMenu("更多...");
-	        sub.add(0, R.style.Theme_Sherlock, 0, "One");
-	        sub.add(0, R.style.Theme_Sherlock_Light, 0, "Two");
+	        sub.add(0, MENU_ABOUT, 0, "关于");
 	        sub.getItem().setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS | MenuItem.SHOW_AS_ACTION_WITH_TEXT);
 	    }
 	    
@@ -259,6 +260,11 @@ public class ChoiceListActivity extends SherlockFragmentActivity {
 		        	break;	        	
 		        }
 		        
+		        case MENU_ABOUT:
+		        {
+					MessageBox.show(ChoiceListFragment.this.getActivity(), "关于", "让我们更好地帮助你决定吃啥，可发信至:shengbinmeng@gmail.com或访问http://www.shengbin.me/apps/chisha");
+		        	break;
+		        }
 		        default:
 		        	break;
 	        }
