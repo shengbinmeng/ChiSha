@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="18" />
 	<uses-permission android:name="android.permission.VIBRATE"></uses-permission>
     <application
         android:allowBackup="true"
@@ -15,17 +15,20 @@
         android:theme="@style/Theme.Sherlock" >
         <activity
             android:name="pku.sigroup.chisha.ChiShaActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ChooseActivity">
+            android:name=".ChooseActivity"
+            android:screenOrientation="portrait">
         </activity>
         <activity
-            android:name=".ChoiceListActivity">
+            android:name=".ChoiceListActivity"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
