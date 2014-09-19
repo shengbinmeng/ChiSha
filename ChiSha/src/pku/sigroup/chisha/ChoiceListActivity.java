@@ -64,8 +64,8 @@ public class ChoiceListActivity extends SherlockFragmentActivity {
 		        	ContextMenuInfo menuInfo) {
 			        	menu.setHeaderTitle("操作");
 			        	menu.add(0,0,0,"删除该项");
-			        	menu.add(0,1,1,"编辑");
-			        	menu.add(0,2,2,"查看详情");
+			        	//menu.add(0,1,1,"编辑");
+			        	//menu.add(0,2,2,"查看详情");
 
 		        	}
 	        	}
@@ -252,7 +252,7 @@ public class ChoiceListActivity extends SherlockFragmentActivity {
 		        	.setNeutralButton("导入...", new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog, int which) {
 							// TODO Auto-generated method stub
-							
+							MessageBox.show(ChoiceListFragment.this.getActivity(), "提示", "此版本不支持导入功能");
 						}
 					})
 		        	.setNegativeButton("取消", null)
